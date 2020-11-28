@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { Animated } from 'react-native';
+import { Animated, Text } from 'react-native';
 
 export default class Label extends PureComponent {
   static defaultProps = {
@@ -29,7 +29,7 @@ export default class Label extends PureComponent {
 
     animationDuration: PropTypes.number.isRequired,
 
-    style: Animated.Text.propTypes.style,
+    style: Text.propTypes.style,
 
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
@@ -68,11 +68,11 @@ export default class Label extends PureComponent {
   }
 
   inputState({ focused, active } = this.props) {
-    return active || focused? 1 : 0;
+    return active || focused ? 1 : 0;
   }
 
   focusState({ focused, errored } = this.props) {
-    return errored? -1 : (focused? 1 : 0);
+    return errored ? -1 : (focused ? 1 : 0);
   }
 
   render() {
@@ -89,14 +89,14 @@ export default class Label extends PureComponent {
       basePadding,
       style,
       errored,
-      active, 
+      active,
       focused,
       animationDuration,
       ...props
     } = this.props;
 
-    let color = restricted?
-      errorColor:
+    let color = restricted ?
+      errorColor :
       focus.interpolate({
         inputRange: [-1, 0, 1],
         outputRange: [errorColor, baseColor, tintColor],
