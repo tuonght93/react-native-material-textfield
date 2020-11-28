@@ -527,14 +527,6 @@ export default class TextField extends PureComponent {
           <View style={{position: 'absolute', right: 12, top: 19}}><Image source={errorImage} style={{width: 24, height: 24}} /></View>
         }
         </View>
-        <Animated.View style={helperContainerStyle}>
-          <View style={styles.flex}>
-            <Helper style={[errorStyle, titleTextStyle]}>{error}</Helper>
-            <Helper style={[titleStyle, titleTextStyle]}>{title}</Helper>
-          </View>
-
-          <Counter {...counterProps} />
-        </Animated.View>
       </View>
     );
   }
