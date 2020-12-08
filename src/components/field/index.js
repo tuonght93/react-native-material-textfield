@@ -408,18 +408,7 @@ export default class TextField extends PureComponent {
 
     let errorStyle = {
       color: errorColor,
-
-      opacity: focus.interpolate({
-        inputRange: [-1, 0, 1],
-        outputRange: [1, 0, 0],
-      }),
-
-      fontSize: title?
-        titleFontSize:
-        focus.interpolate({
-          inputRange:  [-1, 0, 1],
-          outputRange: [titleFontSize, 0, 0],
-        }),
+      fontSize: titleFontSize
     };
 
     let titleStyle = {
@@ -435,12 +424,6 @@ export default class TextField extends PureComponent {
 
     let helperContainerStyle = {
       flexDirection: 'row',
-      height: (title || limit)?
-        titleFontSize * 2:
-        focus.interpolate({
-          inputRange:  [-1, 0, 1],
-          outputRange: [titleFontSize * 2, 8, 8],
-        }),
     };
 
     let containerProps = {
@@ -522,10 +505,11 @@ export default class TextField extends PureComponent {
             {this.renderAccessory()}
           </View>
         </Animated.View>
-        {
-          error && errorImage &&
-          <View style={{position: 'absolute', right: 12, top: 19}}><Image source={errorImage} style={{width: 24, height: 24}} /></View>
-        }
+        </View>
+        <View style={helperContainerStyle}>
+          <View style={styles.flex}>
+            <Text style={[errorStyle, titleTextStyle]}>{error}</Text>
+          </View>
         </View>
       </View>
     );
