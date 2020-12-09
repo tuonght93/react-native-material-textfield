@@ -506,11 +506,14 @@ export default class TextField extends PureComponent {
           </View>
         </Animated.View>
         </View>
-        <View style={helperContainerStyle}>
-          <View style={styles.flex}>
-            <Text style={[errorStyle, titleTextStyle]}>{error}</Text>
+        {
+          error &&
+          <View style={helperContainerStyle}>
+            <View style={styles.flex}>
+              <Text style={[errorStyle, titleTextStyle]}>{error}</Text>
+            </View>
           </View>
-        </View>
+        }
       </View>
     );
   }
